@@ -1,4 +1,4 @@
-# DummyCursor_JustWriteCircle
+# DummyCursor_JustDrawCircle
 
 ## 実験準備手順
 1.Chrome をインストール
