@@ -25,7 +25,6 @@ let value = false;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   load_mode();
-  create_table();
   frameRate(60);
 }
 
@@ -34,7 +33,7 @@ function draw() {
   make_field();
   cursor_trajectory();
   hit_box();
-  set_data_in_table()
+  set_data_in_table();
 }
 
 function load_mode() {
@@ -108,20 +107,23 @@ function set_data_in_table() {
   if (value) {
     let newRow = table.addRow();
     newRow.setNum('id', table.getRowCount());
-    newRow.setNum('x', mouseX);
-    newRow.setNum('y', mouseY);
+    newRow.setNum('x', cursorPosition[cursorPosition.length - 1].x);
+    newRow.setNum('y', cursorPosition[cursorPosition.length - 1].y);
   }
 }
 
 function mousePressed() {
+  cursorPosition = []
+  create_table();
   value = true;
-  cursorPosition = [];
 }
 
 function mouseReleased() {
   value = false;
   let export_filename = str(box_size[0]) + "x" + str(box_size[1]) + "-" + str(cursor_size) + '.csv'
   saveTable(table, export_filename);
+  cursorPosition = [];
+  console.log(cursorPosition);
 }
 
 function keyPressed() {
