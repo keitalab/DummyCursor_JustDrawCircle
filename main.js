@@ -127,10 +127,12 @@ function mouseReleased() {
 }
 
 function keyPressed() {
-  box_size = random(box_sizes);
-  cursor_size = random(cursor_sizes);
-  cursorchoice = random(cursor_types);
-  while (cursor_size > box_size[1]) {
+  if (keyCode === 32){
+    box_size = random(box_sizes);
     cursor_size = random(cursor_sizes);
+    cursorchoice = random(cursor_types);
+    while (cursor_size > box_size[1]) {
+      cursor_size = random(cursor_sizes);
+    }
   }
 }
